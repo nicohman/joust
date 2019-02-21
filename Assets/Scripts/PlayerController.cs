@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour {
     private Jump jumper;
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
+    private Animator anim;
     public Vector2 speed = new Vector2(10, 10);
 	// Use this for initialization
 	void Start () {
         this.jumper = GetComponent<Jump>();
         this.rigid = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
+        this.anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -29,6 +31,11 @@ public class PlayerController : MonoBehaviour {
             this.sprite.flipX = false;
             this.rigid.AddForce(new Vector2(this.speed.x, 0));
         }
+        if (Mathf.Floor(this.rigid.velocity.x) != 0) {
+        this.anim.SetBool("Walking", true);
+        } else {
+        this.anim.SetBool("Walking", false);
+}
 	}
     private void OnGUI()
     {
@@ -36,4 +43,5 @@ public class PlayerController : MonoBehaviour {
             this.jumper.jump();
         }
     }
+    private void AnimationEvent() {}
 }
