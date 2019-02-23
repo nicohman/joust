@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour {
     public KeyCode jumpKey;
@@ -10,25 +12,29 @@ public class PlayerController : MonoBehaviour {
     public int lives = 3;
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
-    private Animator anim;
     public Vector2 speed = new Vector2(10, 10);
     public float immortalTime = 1.0f;
     private RespawnPoint[] respawns;
     private RespawnPoint respawnAt;
     private Collider2D collider;
     public float immortalTimer = 0.0f;
+    public int lifePer = 5;
+    private int nextLife;
     public float respawnTime = 10000f;
+    private MountAnimations mountAnim;
     public  float respawnTimer = 0.0f;
     public int points = 0;
-    public LifeText lifeText;
+    public Text lifeText;
+    public Text scoreText;
 	// Use this for initialization
 	void Start () {
         this.jumper = GetComponent<Jump>();
         this.rigid = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
-        this.anim = GetComponent<Animator>();
+        this.mountAnim = GetComponent<MountAnimations>();
         this.collider = GetComponent<Collider2D>();
         this.respawns = FindObjectsOfType<RespawnPoint>();
+        this.nextLife = this.lifePer;
         this.Die();
 
     }
@@ -40,9 +46,9 @@ public class PlayerController : MonoBehaviour {
         if (this.respawnTimer <= 0)
         {
             this.rigid.gravityScale = 1.0f;
-            if ( this.immortalTimer <= 0f && this.anim.GetBool("Immortal")) {
+            /*if ( this.immortalTimer <= 0f && this.anim.GetBool("Immortal")) {
                 this.anim.SetBool("Immortal", false);
-            }
+            }*/
                 if (Input.GetKey(this.leftKey))
             {
                 this.sprite.flipX = true;
@@ -53,34 +59,42 @@ public class PlayerController : MonoBehaviour {
                 this.sprite.flipX = false;
                 this.rigid.AddForce(new Vector2(this.speed.x, 0));
             }
-  
-            
+            if (Input.GetKeyDown(this.jumpKey)) 
+            {
+                this.mountAnim.PlayFlag();
+                this.jumper.jump();
+            }
+
         }
-        if (Mathf.Floor(this.rigid.velocity.x / 10) != 0)
-        {
-            this.anim.SetBool("Walking", true);
-        }
-        else
-        {
-            this.anim.SetBool("Walking", false);
-        }
+
     }
     private void OnGUI()
     {
-        if (Event.current.Equals(Event.KeyboardEvent(this.jumpKey.ToString()))) {
-            this.jumper.jump();
-        }
+
+    }
+    private void UpdateLifeText()
+    {
+        this.lifeText.text = this.lives.ToString();
+
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (this.rigid.transform.position.y > collision.otherRigidbody.transform.position.y)
+            if (this.transform.position.y > collision.transform.position.y)
             {
                 //Player has won
-                //collision.gameObject.GetComponent<Enemy>().Die();
-                //this.points += collision.gameObject.getComponent<Enemy>().pointValue;
-            } else
+                collision.gameObject.GetComponent<Enemy>().Die();
+                this.points += collision.gameObject.GetComponent<Enemy>().bounty;
+                this.scoreText.text = this.points.ToString("000000");
+                if (this.points > nextLife)
+                {
+                    nextLife += lifePer;
+                    lives++;
+                    UpdateLifeText();
+                }
+            } else if (this.transform.position.y < collision.transform.position.y)
             {
                 //Player has lost
                 this.Die();
@@ -93,11 +107,11 @@ public class PlayerController : MonoBehaviour {
         if (this.lives > 0)
         {
             this.lives--;
+            UpdateLifeText();
             RespawnPoint toRespawn = this.respawns[(int)Mathf.Floor(Random.Range(0.0f, (float)(this.respawns.Length )))];
             this.respawnAt = toRespawn;
             this.transform.position = new Vector3(toRespawn.transform.position.x, toRespawn.transform.position.y, toRespawn.transform.position.z);
             this.immortalTimer = this.immortalTime;
-            this.anim.SetBool("Immortal", true);
             this.respawnTimer = this.respawnTime;
         }
         else
