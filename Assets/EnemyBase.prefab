@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounty: 0
   type: 0
-  egg: {fileID: 0}
+  egg: {fileID: 114276731681533494, guid: bc6aec47e85c74e4baeec5deaacf2049, type: 2}
 --- !u!114 &114685918293620724
 MonoBehaviour:
   m_ObjectHideFlags: 1

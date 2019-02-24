@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour {
     public int lives = 3;
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
-    public Vector2 speed = new Vector2(10, 10);
+    public float speed = 10;
+    public int going = 1;
+    private float veloc = 0;
+    public float acceleration = 60;
     public float immortalTime = 1.0f;
     private RespawnPoint[] respawns;
     private RespawnPoint respawnAt;
-    private new Collider2D collider;
+    private new BoxCollider2D collider;
     public float immortalTimer = 0.0f;
     public int lifePer = 5;
     private int nextLife;
@@ -24,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     private MountAnimations mountAnim;
     public  float respawnTimer = 0.0f;
     public int points = 0;
+    public float bounce = 1.2f;
     public Text lifeText;
     public Text scoreText;
     public GameOver gameOver;
@@ -33,7 +37,7 @@ public class PlayerController : MonoBehaviour {
         this.rigid = GetComponent<Rigidbody2D>();
         this.sprite = GetComponent<SpriteRenderer>();
         this.mountAnim = GetComponent<MountAnimations>();
-        this.collider = GetComponent<Collider2D>();
+        this.collider = GetComponent<BoxCollider2D>();
         this.respawns = FindObjectsOfType<RespawnPoint>();
         this.nextLife = this.lifePer;
         this.lives--;
@@ -52,22 +56,45 @@ public class PlayerController : MonoBehaviour {
             }*/
                 if (Input.GetKey(this.leftKey))
             {
-                this.sprite.flipX = true;
-                this.rigid.AddForce(new Vector2(-this.speed.x, 0));
+                going = -1;
+               this.sprite.flipX = true;
+                if ( veloc > -(speed * 1.06))
+                {
+                    veloc -= speed / acceleration;
+                }
             }
             if (Input.GetKey(this.rightKey))
             {
+                going = 1;
                 this.sprite.flipX = false;
-                this.rigid.AddForce(new Vector2(this.speed.x, 0));
+                if (this.veloc < speed * 1.06 )
+                {
+                    veloc += speed / acceleration;
+                }
             }
             if (Input.GetKeyDown(this.jumpKey)) 
             {
                 this.mountAnim.PlayFlag();
                 this.jumper.jump();
             }
-
+            if (veloc < 0)
+            {
+                veloc = Mathf.Max(veloc, -speed);
+            }
+            else
+            {
+                veloc = Mathf.Min(veloc, speed);
+            }
+            this.rigid.velocity = new Vector2(veloc, rigid.velocity.y);
+            UpdateCollider();
         }
 
+    }
+    private void UpdateCollider()
+    {
+        Vector2 spriteSize = sprite.bounds.size;
+        collider.size = new Vector2(spriteSize.x/2, spriteSize.y/2);
+        collider.offset = new Vector2(0, 0);
     }
     private void OnGUI()
     {
@@ -105,8 +132,9 @@ public class PlayerController : MonoBehaviour {
             }
             Destroy(collision.gameObject);
         }
+     
 
-    }
+        }
     public void Die()
     {
         if (this.lives > 0)

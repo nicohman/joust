@@ -7,12 +7,14 @@ public class MountAnimations : MonoBehaviour {
     private Rigidbody2D rigid;
     public Sprite flying;
     private Sprite sprite;
+    public Sprite skidding;
     public Sprite idle;
+    public float walkThreshold = 0.05f;
+    public float flyThreshold = 0.05f;
     // Use this for initialization
     void Start () {
         this.anim = GetComponent<Animator>();
         this.rigid = GetComponent<Rigidbody2D>();
-        this.sprite = GetComponent<Sprite>();
     }
 	public void PlayFlag()
     {
@@ -20,7 +22,7 @@ public class MountAnimations : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (Mathf.Floor(this.rigid.velocity.y) != 0)
+        if (rigid.velocity.y > flyThreshold || rigid.velocity.y < -flyThreshold)
         {
             this.sprite = this.flying;
             this.anim.SetBool("Walking", false);
@@ -31,8 +33,14 @@ public class MountAnimations : MonoBehaviour {
             this.anim.SetBool("Flying", false);
 
             this.sprite = this.idle;
-
-            if (Mathf.Floor(this.rigid.velocity.x) != 0)
+            int going = GetComponent<PlayerController>().going;
+            if ((rigid.velocity.x > walkThreshold  && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
+            {
+                print("skid");
+                this.anim.SetBool("Walking", false);
+                this.GetComponent<SpriteRenderer>().sprite = this.skidding;
+            } else 
+            if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
             {
                 this.anim.SetBool("Walking", true);
             }
@@ -40,6 +48,6 @@ public class MountAnimations : MonoBehaviour {
             {
                 this.anim.SetBool("Walking", false);
             }
-        } 
+        }
     }
 }

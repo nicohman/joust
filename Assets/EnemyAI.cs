@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour {
             }
         }
 
-            rigid.AddForce(new Vector2(going * speed, 0));
+       rigid.AddForce(new Vector2(going * speed, 0));
 
 
     }

@@ -5,6 +5,10 @@ TextureImporter:
     21300000: Character_sprite_sheet_0
     21300002: Character_sprite_sheet_1
     21300004: Character_sprite_sheet_2
+    21300006: CharacterWalking_0
+    21300008: CharacterWalking_1
+    21300010: CharacterWalking_2
+    21300012: CharacterWalking_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -92,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_sprite_sheet_0
+      name: CharacterWalking_0
       rect:
         serializedVersion: 2
         x: 0
@@ -106,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_sprite_sheet_1
+      name: CharacterWalking_1
       rect:
         serializedVersion: 2
         x: 16
@@ -120,10 +124,24 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_sprite_sheet_2
+      name: CharacterWalking_2
       rect:
         serializedVersion: 2
         x: 0
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterWalking_3
+      rect:
+        serializedVersion: 2
+        x: 16
         y: 0
         width: 16
         height: 24
