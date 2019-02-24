@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     public float immortalTime = 1.0f;
     private RespawnPoint[] respawns;
     private RespawnPoint respawnAt;
-    private Collider2D collider;
+    private new Collider2D collider;
     public float immortalTimer = 0.0f;
     public int lifePer = 5;
     private int nextLife;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     public int points = 0;
     public Text lifeText;
     public Text scoreText;
+    public GameOver gameOver;
 	// Use this for initialization
 	void Start () {
         this.jumper = GetComponent<Jump>();
@@ -35,8 +36,8 @@ public class PlayerController : MonoBehaviour {
         this.collider = GetComponent<Collider2D>();
         this.respawns = FindObjectsOfType<RespawnPoint>();
         this.nextLife = this.lifePer;
-        this.Die();
-
+        this.lives--;
+        UpdateLifeText();
     }
 	
 	// Update is called once per frame
@@ -86,19 +87,23 @@ public class PlayerController : MonoBehaviour {
             {
                 //Player has won
                 collision.gameObject.GetComponent<Enemy>().Die();
-                this.points += collision.gameObject.GetComponent<Enemy>().bounty;
-                this.scoreText.text = this.points.ToString("000000");
-                if (this.points > nextLife)
-                {
-                    nextLife += lifePer;
-                    lives++;
-                    UpdateLifeText();
-                }
+
             } else if (this.transform.position.y < collision.transform.position.y)
             {
                 //Player has lost
                 this.Die();
             }
+        }else if (collision.gameObject.tag == "Egg")
+        {
+            this.points += collision.gameObject.GetComponent<Egg>().bounty;
+            this.scoreText.text = this.points.ToString("000000");
+            if (this.points > nextLife)
+            {
+                nextLife += lifePer;
+                lives++;
+                UpdateLifeText();
+            }
+            Destroy(collision.gameObject);
         }
 
     }
@@ -117,6 +122,8 @@ public class PlayerController : MonoBehaviour {
         else
         {
             print("game over");
+            gameOver.Lose();
+            Destroy(this.gameObject);
             //Player is fully dead
         }
     }
