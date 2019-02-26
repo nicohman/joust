@@ -8,6 +8,8 @@ public class MountAnimations : MonoBehaviour {
     public Sprite flying;
     private Sprite sprite;
     public Sprite skidding;
+    public AudioSource brakeSource;
+    public AudioSource walkSource;
     public Sprite idle;
     public float walkThreshold = 0.05f;
     public float flyThreshold = 0.05f;
@@ -36,16 +38,21 @@ public class MountAnimations : MonoBehaviour {
             int going = GetComponent<PlayerController>().going;
             if ((rigid.velocity.x > walkThreshold  && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
             {
-                print("skid");
+                brakeSource.Play();
                 this.anim.SetBool("Walking", false);
                 this.GetComponent<SpriteRenderer>().sprite = this.skidding;
             } else 
             if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
             {
+                if (!walkSource.isPlaying)
+                {
+                    walkSource.Play();
+                }
                 this.anim.SetBool("Walking", true);
             }
             else
             {
+                walkSource.Stop();
                 this.anim.SetBool("Walking", false);
             }
         }

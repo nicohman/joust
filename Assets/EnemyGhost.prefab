@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   offset: {x: -5.14, y: 0}
-  width: 2.32
+  width: 2.57
 --- !u!114 &114355183697719726
 MonoBehaviour:
   m_ObjectHideFlags: 1

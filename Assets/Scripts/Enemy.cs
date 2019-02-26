@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour {
         //death animation
         //drop egg
         //destroy object
+        Destroy(this.GetComponent<Ghost>().target.gameObject);
         Destroy(this.gameObject);
     }
 }
