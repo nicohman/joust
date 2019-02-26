@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
                 switch (command.Action)
                 {
                     case TutorialCommand.Actions.PlayerJump:
-
+                    //case TutorialCommand.Actions.DisplayText:
                         this.flapTimer += Time.deltaTime;
                         if (this.flapTimer > 0.2f)
                         {
@@ -80,6 +80,34 @@ public class PlayerController : MonoBehaviour {
                             this.jumper.jump();
                         }
                         break;
+                    case TutorialCommand.Actions.DisplayText:
+
+                        break;
+                    case TutorialCommand.Actions.PlayerHover:
+                        {
+                            this.flapTimer += Time.deltaTime;
+                            if (this.flapTimer>0.25f)
+                            {
+                                this.flapTimer -= 0.25f;
+                                this.mountAnim.PlayFlag();
+                                this.jumper.jump();
+
+                            }
+                        }
+                        break;
+                    case TutorialCommand.Actions.LockPosition:
+                        {
+                            this.flapTimer += Time.deltaTime;
+                            if (this.flapTimer > 0.25f)
+                            {
+                                this.flapTimer -= 0.25f;
+                                this.mountAnim.PlayFlag();
+                                this.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                            }
+                        }
+                        break;
+
                 }
             }
         }
@@ -177,8 +205,10 @@ public class PlayerController : MonoBehaviour {
     {
         new TutorialCommand() { StartTime = 0.0f, EndTime = 3.0f, Action =TutorialCommand.Actions.DisplayText, Text="Welcome to Joust"},
         new TutorialCommand() { StartTime = 3.0f, EndTime = 6.0f, Action =TutorialCommand.Actions.DisplayText, Text="To Fly"},
-        new TutorialCommand() { StartTime = 2.0f, EndTime = 4.0f, Action =TutorialCommand.Actions.PlayerJump },
-        new TutorialCommand() { StartTime = 6.0f, EndTime = 8.0f, Action =TutorialCommand.Actions.PlayerJump },
+       // new TutorialCommand() { StartTime = 2.0f, EndTime = 4.0f, Action =TutorialCommand.Actions.PlayerJump },
+        new TutorialCommand() { StartTime = 6.0f, EndTime = 7.9f, Action =TutorialCommand.Actions.PlayerJump },
+        new TutorialCommand() { StartTime = 7.95f, EndTime = 9.0f, Action = TutorialCommand.Actions.PlayerHover },
+        new TutorialCommand() { StartTime = 9.0f, EndTime = 18, Action = TutorialCommand.Actions.LockPosition }
     };
 }
 
@@ -188,7 +218,9 @@ public class TutorialCommand
     public enum Actions
     {
         DisplayText,
-        PlayerJump
+        PlayerJump,
+        PlayerHover,
+        LockPosition
     }
     public float StartTime { get; set; }
     public float EndTime { get; set; }
