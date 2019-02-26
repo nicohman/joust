@@ -38,7 +38,10 @@ public class MountAnimations : MonoBehaviour {
             int going = GetComponent<PlayerController>().going;
             if ((rigid.velocity.x > walkThreshold  && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
             {
-                brakeSource.Play();
+                if (!brakeSource.isPlaying)
+                {
+                    brakeSource.Play();
+                }
                 this.anim.SetBool("Walking", false);
                 this.GetComponent<SpriteRenderer>().sprite = this.skidding;
             } else 

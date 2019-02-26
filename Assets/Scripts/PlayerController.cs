@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     private RespawnPoint[] respawns;
     private RespawnPoint respawnAt;
     private new BoxCollider2D collider;
+    public AudioSource deathSource;
     public float immortalTimer = 0.0f;
     public int lifePer = 5;
     private int nextLife;
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour {
             } else if (this.transform.position.y < collision.transform.position.y)
             {
                 //Player has lost
+                deathSource.Play();
                 this.Die();
             }
         }else if (collision.gameObject.tag == "Egg")
