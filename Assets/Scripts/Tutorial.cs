@@ -62,28 +62,23 @@ public class Tutorial : MonoBehaviour {
                 switch (command.Action)
                 {
                     case TutorialCommand.Actions.PlayerJump:
-                        //case TutorialCommand.Actions.DisplayText:
+                        //GetComponent<Jump>().jumpForce = 13.0f;
                         this.flapTimer += Time.deltaTime;
-                        if (this.flapTimer > 0.3f)
+                        if (this.flapTimer > 0.2f)
                         {
-                            this.flapTimer -= 0.3f;
+                            this.flapTimer -= 0.2f;
                             this.mountAnim.PlayFlag();
-                            this.jumper.jump();
+                            rigid.velocity = new Vector2(rigid.velocity.x, 2);
                         }
                         break;
-                    case TutorialCommand.Actions.DisplayText:
 
-                        break;
                     case TutorialCommand.Actions.PlayerHover:
                         {
-                            this.flapTimer += Time.deltaTime;
-                            if (this.flapTimer > 0.25f)
-                            {
-                                this.flapTimer -= 0.25f;
+                      
                                 this.mountAnim.PlayFlag();
-                                this.jumper.jump();
+                                rigid.velocity = new Vector2(rigid.velocity.x, -0.1f);
+                            rigid.gravityScale = 0;
 
-                            }
                         }
                         break;
                     case TutorialCommand.Actions.LockPosition:
@@ -98,12 +93,14 @@ public class Tutorial : MonoBehaviour {
                             }
                         }
                         break;
-                    case TutorialCommand.Actions.PlayerFlap:
-                        //case TutorialCommand.Actions.DisplayText:
-                        this.flapTimer += Time.deltaTime;
-                        this.mountAnim.PlayFlag();
-                        rigid.AddForce(new Vector2(0, 10));
-
+                        case TutorialCommand.Actions.PlayerFlap:
+                        {
+                      
+                                this.flapTimer += Time.deltaTime;
+                                this.mountAnim.PlayFlag();
+                                this.jumper.jump();
+                            
+                        }
                         break;
 
                 }
@@ -188,8 +185,8 @@ public class Tutorial : MonoBehaviour {
         new TutorialCommand() { StartTime = 6.0f, EndTime = 6.25f, Action =TutorialCommand.Actions.PlayerFlap },
         new TutorialCommand() { StartTime = 7.0f, EndTime = 7.25f, Action =TutorialCommand.Actions.PlayerFlap },
         new TutorialCommand() { StartTime = 8.0f, EndTime = 10.0f, Action =TutorialCommand.Actions.PlayerJump },
-        new TutorialCommand() { StartTime = 7.95f, EndTime = 9.0f, Action = TutorialCommand.Actions.PlayerHover },
-        new TutorialCommand() { StartTime = 9.0f, EndTime = 18, Action = TutorialCommand.Actions.LockPosition }
+        new TutorialCommand() { StartTime = 10.0f, EndTime = 13.0f, Action = TutorialCommand.Actions.PlayerHover },
+        //new TutorialCommand() { StartTime = 9.0f, EndTime = 18, Action = TutorialCommand.Actions.LockPosition }
     };
 }
 

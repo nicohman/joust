@@ -216,10 +216,10 @@ GameObject:
   - component: {fileID: 178603430}
   - component: {fileID: 178603429}
   - component: {fileID: 178603428}
-  - component: {fileID: 178603427}
   - component: {fileID: 178603426}
   - component: {fileID: 178603425}
   - component: {fileID: 178603424}
+  - component: {fileID: 178603427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -279,18 +279,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 178603423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b152a7cf129564eafb335fcf94ef4e, type: 3}
+  m_Script: {fileID: 11500000, guid: b6c2e152035277649b403dc3639c0959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpKey: 32
-  leftKey: 276
-  rightKey: 275
-  lives: 5
+  lives: 0
   speed: {x: 10, y: 10}
   immortalTime: 1
   immortalTimer: 0
-  lifePer: 22000
-  respawnTime: 0.5
+  lifePer: 5
+  respawnTime: 10000
   respawnTimer: 0
   points: 0
   lifeText: {fileID: 0}
@@ -355,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621ad16095cf5d346abb4ad89fa036fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 100
+  jumpForce: 12
 --- !u!212 &178603431
 SpriteRenderer:
   m_ObjectHideFlags: 0
