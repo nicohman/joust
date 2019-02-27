@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
     public Text lifeText;
     public Text scoreText;
     public GameOver gameOver;
-    public bool tutorial = false;
 
     public float flapTimer = 0.0f;
     public float tutorialTimer = 0.0f;
@@ -49,69 +48,35 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (tutorial)
-        {
-            updateTutorial();
-        }
-        else
-        {
-            updateGamemode();
-        }
-    }
-    private void updateTutorial()
-    {
-        this.tutorialTimer += Time.deltaTime;
+        this.immortalTimer -= Time.deltaTime;
+        this.respawnTimer -= Time.deltaTime;
 
-        // Look at all the commands and do the things that are within the timeframe
-        foreach (var command in commands)
+        if (this.respawnTimer <= 0)
         {
-            // In timeframe?
-            if ((tutorialTimer >= command.StartTime) && (tutorialTimer <= command.EndTime))
+            this.rigid.gravityScale = 1.0f;
+            /*if ( this.immortalTimer <= 0f && this.anim.GetBool("Immortal")) {
+                this.anim.SetBool("Immortal", false);
+            }*/
+            if (Input.GetKey(this.leftKey))
             {
-                switch (command.Action)
-                {
-                    case TutorialCommand.Actions.PlayerJump:
-                    //case TutorialCommand.Actions.DisplayText:
-                        this.flapTimer += Time.deltaTime;
-                        if (this.flapTimer > 0.2f)
-                        {
-                            this.flapTimer -= 0.2f;
-                            this.mountAnim.PlayFlag();
-                            this.jumper.jump();
-                        }
-                        break;
-                    case TutorialCommand.Actions.DisplayText:
-
-                        break;
-                    case TutorialCommand.Actions.PlayerHover:
-                        {
-                            this.flapTimer += Time.deltaTime;
-                            if (this.flapTimer>0.25f)
-                            {
-                                this.flapTimer -= 0.25f;
-                                this.mountAnim.PlayFlag();
-                                this.jumper.jump();
-
-                            }
-                        }
-                        break;
-                    case TutorialCommand.Actions.LockPosition:
-                        {
-                            this.flapTimer += Time.deltaTime;
-                            if (this.flapTimer > 0.25f)
-                            {
-                                this.flapTimer -= 0.25f;
-                                this.mountAnim.PlayFlag();
-                                this.rigid.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                            }
-                        }
-                        break;
-
-                }
+                this.sprite.flipX = true;
+                this.rigid.AddForce(new Vector2(-this.speed.x, 0));
             }
+            if (Input.GetKey(this.rightKey))
+            {
+                this.sprite.flipX = false;
+                this.rigid.AddForce(new Vector2(this.speed.x, 0));
+            }
+            if (Input.GetKeyDown(this.jumpKey))
+            {
+                this.mountAnim.PlayFlag();
+                this.jumper.jump();
+            }
+
         }
     }
+   
+    
     private void updateGamemode()
     {
         this.immortalTimer -= Time.deltaTime;
@@ -199,32 +164,8 @@ public class PlayerController : MonoBehaviour {
             //Player is fully dead
         }
     }
-    private void AnimationEvent() {}
-
-    private List<TutorialCommand> commands = new List<TutorialCommand>()
-    {
-        new TutorialCommand() { StartTime = 0.0f, EndTime = 3.0f, Action =TutorialCommand.Actions.DisplayText, Text="Welcome to Joust"},
-        new TutorialCommand() { StartTime = 3.0f, EndTime = 6.0f, Action =TutorialCommand.Actions.DisplayText, Text="To Fly"},
-       // new TutorialCommand() { StartTime = 2.0f, EndTime = 4.0f, Action =TutorialCommand.Actions.PlayerJump },
-        new TutorialCommand() { StartTime = 6.0f, EndTime = 7.9f, Action =TutorialCommand.Actions.PlayerJump },
-        new TutorialCommand() { StartTime = 7.95f, EndTime = 9.0f, Action = TutorialCommand.Actions.PlayerHover },
-        new TutorialCommand() { StartTime = 9.0f, EndTime = 18, Action = TutorialCommand.Actions.LockPosition }
-    };
+  
+ 
 }
 
 
-public class TutorialCommand
-{
-    public enum Actions
-    {
-        DisplayText,
-        PlayerJump,
-        PlayerHover,
-        LockPosition
-    }
-    public float StartTime { get; set; }
-    public float EndTime { get; set; }
-    public Actions Action { get; set; }
-    public string Text { get; set; }
-
-}
