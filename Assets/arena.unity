@@ -138,7 +138,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 129189657}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -724,7 +724,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 683947158}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1414,7 +1414,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1271883731}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1519,6 +1519,7 @@ MonoBehaviour:
     type: 2}
   enemyGhost: {fileID: 1678969432161000, guid: 5afa1929d3a511c4c94890def98bbbdf, type: 2}
   interval: 2
+  max: 3
 --- !u!4 &1358562779
 Transform:
   m_ObjectHideFlags: 0
@@ -1557,7 +1558,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1364261675}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1656,7 +1657,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1366058940}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2171,7 +2172,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1774948788}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2539,11 +2540,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flying: {fileID: 21300002, guid: e190df0dae549144a9f2aefbfdd2c4e3, type: 3}
+  enemy: 0
   skidding: {fileID: 21300000, guid: 3e6335a246f57004792d21014aed62a8, type: 3}
   brakeSource: {fileID: 1750807528}
   walkSource: {fileID: 1852249537}
   idle: {fileID: 21300000, guid: 549e01653e96d824397ae4147a7ea59f, type: 3}
-  walkThreshold: 0.01
+  walkThreshold: 0.0001
   flyThreshold: 0.05
 --- !u!114 &1832760355
 MonoBehaviour:

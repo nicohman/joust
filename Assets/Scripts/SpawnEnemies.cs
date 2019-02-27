@@ -7,6 +7,8 @@ public class SpawnEnemies : MonoBehaviour {
     public Enemy enemyBase;
     public GameObject enemyGhost;
     public float interval = 4.0f;
+    public int max = 3;
+    private int count = 0;
     private float timer = 0.0f;
     // Use this for initialization
     void Start () {
@@ -17,8 +19,9 @@ public class SpawnEnemies : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         timer -= Time.deltaTime;
-        if (timer < 0)
+        if (timer < 0 && count <max)
         {
+            count++;
             timer = interval;
             RespawnPoint toRespawn = this.respawns[(int)Mathf.Floor(Random.Range(0.0f, (float)(this.respawns.Length)))];
             Enemy newEnemy = (Enemy)Instantiate(enemyBase, toRespawn.transform.position, toRespawn.transform.rotation);

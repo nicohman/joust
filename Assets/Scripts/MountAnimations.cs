@@ -6,6 +6,7 @@ public class MountAnimations : MonoBehaviour {
     private Animator anim;
     private Rigidbody2D rigid;
     public Sprite flying;
+    public bool enemy = true;
     private Sprite sprite;
     public Sprite skidding;
     public AudioSource brakeSource;
@@ -24,40 +25,38 @@ public class MountAnimations : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (rigid.velocity.y > flyThreshold || rigid.velocity.y < -flyThreshold)
+        int going = 1;
+        if (!enemy)
         {
-            this.sprite = this.flying;
-            this.anim.SetBool("Walking", false);
-            this.anim.SetBool("Flying", true);
-        }
-        else
+             going = GetComponent<PlayerController>().going;
+        } else
         {
-            this.anim.SetBool("Flying", false);
-
-            this.sprite = this.idle;
-            int going = GetComponent<PlayerController>().going;
-            if ((rigid.velocity.x > walkThreshold  && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
-            {
-                if (!brakeSource.isPlaying)
-                {
-                    brakeSource.Play();
-                }
-                this.anim.SetBool("Walking", false);
-                this.GetComponent<SpriteRenderer>().sprite = this.skidding;
-            } else 
-            if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
-            {
-                if (!walkSource.isPlaying)
-                {
-                    walkSource.Play();
-                }
-                this.anim.SetBool("Walking", true);
-            }
-            else
-            {
-                walkSource.Stop();
-                this.anim.SetBool("Walking", false);
-            }
+            going = GetComponent<EnemyController>().going;
         }
+        if (rigid.velocity.y>0)
+        {
+            this.anim.SetInteger("State", 2);
+        } else if (rigid.velocity.y < 0)
+        {
+            this.anim.SetInteger("State", 3);
+        } else if ((rigid.velocity.x > walkThreshold && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
+        {
+            if (!brakeSource.isPlaying && !enemy)
+            {
+                brakeSource.Play();
+            }
+            this.anim.SetInteger("State", 4);
+        } else if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
+        {
+            if (!walkSource.isPlaying && !enemy)
+            {
+                walkSource.Play();
+            }
+            this.anim.SetInteger("State", 1);
+        } else
+        {
+            this.anim.SetInteger("State", 0);
+        }
+  
     }
 }
