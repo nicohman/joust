@@ -8,8 +8,9 @@ public class Egg : MonoBehaviour {
     public float waitTime = 2.0f;
     private float waitTimer;
     public Enemy enemyBase;
-	// Use this for initialization
-	void Start () {
+    public GameObject enemyGhost;
+    // Use this for initialization
+    void Start () {
         this.waitTimer = this.waitTime;
 	}
 	
@@ -20,6 +21,8 @@ public class Egg : MonoBehaviour {
         {
             Enemy newEnemy = (Enemy)Instantiate(enemyBase, transform.position, transform.rotation);
             newEnemy.type = type;
+            GameObject newGhost = (GameObject)Instantiate(enemyGhost, transform.position, transform.rotation);
+            newEnemy.GetComponent<Ghost>().target = newGhost;
             Destroy(this.gameObject);
         }
     }

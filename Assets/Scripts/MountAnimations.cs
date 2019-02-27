@@ -6,7 +6,11 @@ public class MountAnimations : MonoBehaviour {
     private Animator anim;
     private Rigidbody2D rigid;
     public Sprite flying;
+    public bool enemy = true;
     private Sprite sprite;
+    public Sprite skidding;
+    public AudioSource brakeSource;
+    public AudioSource walkSource;
     public Sprite idle;
     // Use this for initialization
     void Start () {
@@ -20,26 +24,38 @@ public class MountAnimations : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (Mathf.Floor(this.rigid.velocity.y) != 0)
+        int going = 1;
+        if (!enemy)
         {
-            this.sprite = this.flying;
-            this.anim.SetBool("Walking", false);
-            this.anim.SetBool("Flying", true);
+             going = GetComponent<PlayerController>().going;
+        } else
+        {
+            going = GetComponent<EnemyController>().going;
         }
-        else
+        if (rigid.velocity.y>0)
         {
-            this.anim.SetBool("Flying", false);
-
-            this.sprite = this.idle;
-
-            if (Mathf.Floor(this.rigid.velocity.x) != 0)
+            this.anim.SetInteger("State", 2);
+        } else if (rigid.velocity.y < 0)
+        {
+            this.anim.SetInteger("State", 3);
+        } else if ((rigid.velocity.x > walkThreshold && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
+        {
+            if (!brakeSource.isPlaying && !enemy)
             {
-                this.anim.SetBool("Walking", true);
+                brakeSource.Play();
             }
-            else
+            this.anim.SetInteger("State", 4);
+        } else if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
+        {
+            if (!walkSource.isPlaying && !enemy)
             {
-                this.anim.SetBool("Walking", false);
+                walkSource.Play();
             }
-        } 
+            this.anim.SetInteger("State", 1);
+        } else
+        {
+            this.anim.SetInteger("State", 0);
+        }
+  
     }
 }

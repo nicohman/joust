@@ -24,8 +24,12 @@ GameObject:
   - component: {fileID: 114685918293620724}
   - component: {fileID: 50029290531661784}
   - component: {fileID: 61408348020469130}
-  - component: {fileID: 114730907323748720}
-  - component: {fileID: 114581230770903784}
+  - component: {fileID: 114036002675313774}
+  - component: {fileID: 114746874975561584}
+  - component: {fileID: 114072515931167728}
+  - component: {fileID: 111913956637297308}
+  - component: {fileID: 95578158782424914}
+  - component: {fileID: 114479946104436028}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Enemy
@@ -40,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649174305144860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.477, y: 0.087, z: 0.06521801}
+  m_LocalPosition: {x: 1.5, y: -1.27, z: 0.06521801}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,6 +95,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.24}
   m_EdgeRadius: 0
+--- !u!95 &95578158782424914
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649174305144860}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d7a05cb1de28bc489a9c5a292aae12c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &111913956637297308
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649174305144860}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &114036002675313774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649174305144860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576cf5b9b3d5b44e3a99eee40d73349f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  offset: {x: -5.14, y: 0}
+  width: 2.57
+--- !u!114 &114072515931167728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649174305144860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e7d98d63c634431807abd8d0bd686e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 2.57
 --- !u!114 &114290583916061860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +166,7 @@ MonoBehaviour:
   bounty: 0
   type: 0
   egg: {fileID: 114276731681533494, guid: bc6aec47e85c74e4baeec5deaacf2049, type: 2}
---- !u!114 &114581230770903784
+--- !u!114 &114479946104436028
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -113,12 +174,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649174305144860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b43000ed3fd3164c8737648b0420ade, type: 3}
+  m_Script: {fileID: 11500000, guid: 186013cfb4d644d4cacdad3260f3c763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounty: 0
-  type: 0
-  egg: {fileID: 0}
+  flying: {fileID: 0}
+  skidding: {fileID: 0}
+  brakeSource: {fileID: 0}
+  walkSource: {fileID: 0}
+  idle: {fileID: 0}
+  walkThreshold: 0.05
+  flyThreshold: 0.05
 --- !u!114 &114685918293620724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621ad16095cf5d346abb4ad89fa036fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 100
---- !u!114 &114730907323748720
+  jumpForce: 2
+--- !u!114 &114746874975561584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,13 +204,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649174305144860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee410cdf3d4998840b59c83298f34ab0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ff6c23e5195e5e4980a70086c3890a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyVelocity: {x: 0, y: 0, z: 0}
-  flapStrength: 0
-  speed: 2
-  player: {fileID: 0}
+  speed: 1
+  maxSpeed: 1
+  going: 1
   jumpInterval: 1
 --- !u!212 &212854307581877482
 SpriteRenderer:

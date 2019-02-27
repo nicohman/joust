@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour {
     public Vector3 enemyVelocity = new Vector3(0, 0,0);
     public int flapStrength = 10;
-    public int speed = 2;
+    public int speed = 1;
     public PlayerController player;
     private Rigidbody2D rigid = new Rigidbody2D();
     private Jump jumper;
     private int going = 1;
-    private float jumpTimer = 0;
+    public float jumpTimer = 0;
     public float jumpInterval = 1.0f;
     // Use this for initialization
 	void Start()
@@ -55,8 +55,8 @@ public class EnemyAI : MonoBehaviour {
             }
         }
 
-            rigid.AddForce(new Vector2(going * speed, 0));
-
+       rigid.AddForce(new Vector2(going * speed, 0));
+        rigid.velocity = new Vector2(Mathf.Min(rigid.velocity.x, speed), 0);
 
     }
     private void OnCollisionEnter2D(Collision2D collision)

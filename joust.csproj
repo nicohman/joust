@@ -287,7 +287,6 @@
     <Compile Include="Assets\Egg.cs" />
     <Compile Include="Assets\EnemyAI.cs" />
     <Compile Include="Assets\GameOver.cs" />
-    <Compile Include="Assets\Scripts\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Ghost.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
@@ -298,8 +297,6 @@
     <Compile Include="Assets\Scripts\RespawnPoint.cs" />
     <Compile Include="Assets\Scripts\Wrap.cs" />
     <Compile Include="Assets\SelectMenu.cs" />
-    <Compile Include="Assets\TextDisappear.cs" />
-    <Compile Include="Assets\TextVisibility.cs" />
     <Compile Include="Assets\WaveStart.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
