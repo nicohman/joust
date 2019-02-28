@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour {
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.position.y < transform.position.y + col.bounds.extents.y && collision.transform.position.y +collision.collider.bounds.extents.y >  transform.position.y)
+        if ((collision.transform.position.y <= transform.position.y + col.bounds.extents.y && collision.transform.position.y +collision.collider.bounds.extents.y >=  transform.position.y) || collision.gameObject.tag == "Enemy")
         {
             going = going * -1;
 

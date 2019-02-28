@@ -26,6 +26,7 @@ public class MountAnimations : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         int going = 1;
+        int playing = 0;
         if (!enemy)
         {
              going = GetComponent<PlayerController>().going;
@@ -33,7 +34,8 @@ public class MountAnimations : MonoBehaviour {
         {
             going = GetComponent<EnemyController>().going;
         }
-        if (rigid.velocity.y>0)
+
+        if (rigid.velocity.y>0 || (enemy && GetComponent<EnemyController>().ClosestPlayer().transform.position.y + GetComponent<SpriteRenderer>().bounds.extents.y > transform.position.y))
         {
             this.anim.SetInteger("State", 2);
         } else if (rigid.velocity.y < 0)
@@ -41,15 +43,18 @@ public class MountAnimations : MonoBehaviour {
             this.anim.SetInteger("State", 3);
         } else if ((rigid.velocity.x > walkThreshold && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
         {
-            if (!brakeSource.isPlaying && !enemy)
+            if (!enemy && !brakeSource.isPlaying )
             {
+                playing = 2;
                 brakeSource.Play();
             }
             this.anim.SetInteger("State", 4);
+
         } else if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
         {
-            if (!walkSource.isPlaying && !enemy)
+            if ( !enemy && !walkSource.isPlaying )
             {
+                playing = 1;
                 walkSource.Play();
             }
             this.anim.SetInteger("State", 1);
@@ -57,6 +62,13 @@ public class MountAnimations : MonoBehaviour {
         {
             this.anim.SetInteger("State", 0);
         }
-  
+        if (playing != 1 && !enemy)
+        {
+            walkSource.Stop();
+        }
+        if (playing != 2 && !enemy)
+        {
+            brakeSource.Stop();
+        }
     }
 }

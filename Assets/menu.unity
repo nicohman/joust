@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.1254902, g: 0.5568628, b: 0.9882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.98039216, g: 0.91764706, b: 0.1882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.98039216, g: 0.91764706, b: 0.1882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.1254902, g: 0.5568628, b: 0.9882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -886,7 +886,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.98039216, g: 0.91764706, b: 0.1882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.98039216, g: 0.91764706, b: 0.1882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.1254902, g: 0.5568628, b: 0.9882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a7c5176279144d4488bd78113dccb9cc, type: 3}
   m_Color: {r: 0.1254902, g: 0.5568628, b: 0.9882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

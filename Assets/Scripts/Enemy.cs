@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     public int bounty = 0;
     public EnemyType type = EnemyType.Bounder;
     public Egg egg;
+    public GameObject deathParticles;
 	// Use this for initialization
 	void Start () {
 		switch (type)
@@ -37,6 +38,8 @@ public class Enemy : MonoBehaviour {
         newEgg.type = type;
         newEgg.bounty = bounty;
         //death animation
+        Instantiate<GameObject>(deathParticles, transform.position, transform.rotation);
+
         //drop egg
         //destroy object
         Destroy(this.GetComponent<Ghost>().target.gameObject);

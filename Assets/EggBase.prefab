@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114276731681533494}
   - component: {fileID: 50697708725343504}
   - component: {fileID: 61538517418058414}
+  - component: {fileID: 95636546144133200}
   m_Layer: 0
   m_Name: EggBase
   m_TagString: Egg
@@ -88,6 +89,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.09}
   m_EdgeRadius: 0
+--- !u!95 &95636546144133200
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853897516483388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1910fc08a9eebe40881c876c5b4a647, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114276731681533494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +120,7 @@ MonoBehaviour:
   type: 0
   bounty: 0
   waitTime: 2
+  animTime: 1.5
   enemyBase: {fileID: 114290583916061860, guid: 4c2b4e278597f4b17af1f896a168c1f4,
     type: 2}
   enemyGhost: {fileID: 1678969432161000, guid: 5afa1929d3a511c4c94890def98bbbdf, type: 2}

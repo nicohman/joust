@@ -166,6 +166,8 @@ MonoBehaviour:
   bounty: 0
   type: 0
   egg: {fileID: 114276731681533494, guid: bc6aec47e85c74e4baeec5deaacf2049, type: 2}
+  deathParticles: {fileID: 1340478275718750, guid: 110f17dd244c65e40b68ddab06023295,
+    type: 2}
 --- !u!114 &114479946104436028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flying: {fileID: 0}
+  enemy: 1
   skidding: {fileID: 0}
   brakeSource: {fileID: 0}
   walkSource: {fileID: 0}

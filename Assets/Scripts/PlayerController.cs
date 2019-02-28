@@ -8,12 +8,14 @@ public class PlayerController : MonoBehaviour {
     public KeyCode jumpKey;
     public KeyCode leftKey;
     public KeyCode rightKey;
+    public GameObject deathParticles;
     private Jump jumper;
     public int lives = 3;
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
     public float speed = 10;
     public int going = 1;
+    public AudioSource flapSource;
     private float veloc = 0;
     public float acceleration = 60;
     public float immortalTime = 1.0f;
@@ -27,10 +29,14 @@ public class PlayerController : MonoBehaviour {
     public float respawnTime = 10000f;
     private MountAnimations mountAnim;
     public  float respawnTimer = 0.0f;
+    public Canvas canvas;
     public int points = 0;
     public float bounce = 1.2f;
     public Text lifeText;
     public Text scoreText;
+    public Text scorePop;
+    public Font font;
+    public Material fontMaterial;
     public GameOver gameOver;
 	// Use this for initialization
 	void Start () {
@@ -55,6 +61,17 @@ public class PlayerController : MonoBehaviour {
             /*if ( this.immortalTimer <= 0f && this.anim.GetBool("Immortal")) {
                 this.anim.SetBool("Immortal", false);
             }*/
+            if (rigid.velocity.y.Equals(0) && flapSource.isPlaying)
+            {
+                flapSource.Stop();
+            }
+            if (going ==1&& !sprite.flipX)
+            {
+                sprite.flipX = false;
+            } else if (going == -1 && sprite.flipX)
+            {
+                sprite.flipX = true;
+            }
                 if (Input.GetKey(this.leftKey))
             {
                 going = -1;
@@ -75,6 +92,7 @@ public class PlayerController : MonoBehaviour {
             }
             if (Input.GetKeyDown(this.jumpKey)) 
             {
+                this.flapSource.Play();
                 this.mountAnim.PlayFlag();
                 this.jumper.jump();
             }
@@ -115,7 +133,16 @@ public class PlayerController : MonoBehaviour {
             {
                 //Player has won
                 collision.gameObject.GetComponent<Enemy>().Die();
-
+                int bounty = collision.gameObject.GetComponent<Enemy>().bounty;
+                this.points += bounty;
+                this.scoreText.text = this.points.ToString("000000");
+                ScorePopup(bounty);
+                if (this.points > nextLife)
+                {
+                    nextLife += lifePer;
+                    lives++;
+                    UpdateLifeText();
+                }
             } else if (this.transform.position.y < collision.transform.position.y)
             {
                 //Player has lost
@@ -124,8 +151,10 @@ public class PlayerController : MonoBehaviour {
             }
         }else if (collision.gameObject.tag == "Egg")
         {
-            this.points += collision.gameObject.GetComponent<Egg>().bounty;
+            int bounty = collision.gameObject.GetComponent<Egg>().bounty;
+            this.points += bounty;
             this.scoreText.text = this.points.ToString("000000");
+            ScorePopup(bounty);
             if (this.points > nextLife)
             {
                 nextLife += lifePer;
@@ -134,9 +163,24 @@ public class PlayerController : MonoBehaviour {
             }
             Destroy(collision.gameObject);
         }
-     
+        
 
         }
+    public void ScorePopup(int points)
+    {
+        GameObject popup = new GameObject("popup");
+        Text text = popup.AddComponent<Text>();
+        text.text = points.ToString("000");
+        text.transform.SetParent(canvas.transform);
+        text.transform.position = new Vector3(transform.position.x + 0.4f, transform.position.y-0.4f, 1);
+        text.fontSize = 7;
+        text.font = font;
+        text.transform.localScale = new Vector3(0.01f, 0.01f);
+        text.material = fontMaterial;
+        DieAfter die_after = popup.AddComponent<DieAfter>();
+        die_after.time = 0.5f;
+        popup.transform.SetParent(canvas.transform);
+    }
     public void Die()
     {
         if (this.lives > 0)
@@ -144,6 +188,7 @@ public class PlayerController : MonoBehaviour {
             this.lives--;
             UpdateLifeText();
             RespawnPoint toRespawn = this.respawns[(int)Mathf.Floor(Random.Range(0.0f, (float)(this.respawns.Length )))];
+            Instantiate<GameObject>(deathParticles, transform.position, transform.rotation);
             this.respawnAt = toRespawn;
             this.transform.position = new Vector3(toRespawn.transform.position.x, toRespawn.transform.position.y, toRespawn.transform.position.z);
             this.immortalTimer = this.immortalTime;
@@ -151,11 +196,12 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            Instantiate<GameObject>(deathParticles, transform.position, transform.rotation);
             print("game over");
             gameOver.Lose();
             Destroy(this.gameObject);
             //Player is fully dead
         }
+        
     }
-    private void AnimationEvent() {}
 }
