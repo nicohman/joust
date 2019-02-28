@@ -56,8 +56,6 @@ public class EnemyAI : MonoBehaviour {
         }
 
        rigid.AddForce(new Vector2(going * speed, 0));
-
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

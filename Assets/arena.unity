@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showTime: 5
+  showTimer: 0
 --- !u!114 &442631702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,6 +1351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showTime: 5
+  showTimer: 0
+  text: {fileID: 0}
 --- !u!114 &1197280548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2433,9 +2436,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
+  m_Mass: 6
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 43cd407718bf84476bcad8a8bcf069c0, type: 2}
   m_Interpolate: 0
@@ -2482,11 +2485,11 @@ MonoBehaviour:
   leftKey: 276
   rightKey: 275
   lives: 5
-  speed: 2
-  going: 1
   acceleration: 40
   immortalTime: 1
   deathSource: {fileID: 1921995360}
+  brakeSource: {fileID: 1750807528}
+  walkSource: {fileID: 1852249537}
   immortalTimer: 0
   lifePer: 22000
   respawnTime: 0.5
@@ -2496,6 +2499,10 @@ MonoBehaviour:
   lifeText: {fileID: 962355155}
   scoreText: {fileID: 356625228}
   gameOver: {fileID: 1197280547}
+  speed: {x: 20, y: 650}
+  maxSpeed: 3
+  walkThreshold: 0.05
+  flyThreshold: 0.05
 --- !u!111 &1832760352
 Animation:
   m_ObjectHideFlags: 0
@@ -2538,7 +2545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186013cfb4d644d4cacdad3260f3c763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  rigid: {fileID: 0}
   flying: {fileID: 21300002, guid: e190df0dae549144a9f2aefbfdd2c4e3, type: 3}
+  sprite: {fileID: 0}
   skidding: {fileID: 21300000, guid: 3e6335a246f57004792d21014aed62a8, type: 3}
   brakeSource: {fileID: 1750807528}
   walkSource: {fileID: 1852249537}
