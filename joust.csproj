@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -286,6 +284,7 @@
   <ItemGroup>
     <Compile Include="Assets\Egg.cs" />
     <Compile Include="Assets\EnemyAI.cs" />
+    <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\GameOver.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Ghost.cs" />
@@ -295,8 +294,13 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerPosition.cs" />
     <Compile Include="Assets\Scripts\RespawnPoint.cs" />
+    <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
+    <Compile Include="Assets\Scripts\Tutorial.cs" />
     <Compile Include="Assets\Scripts\Wrap.cs" />
     <Compile Include="Assets\SelectMenu.cs" />
+    <Compile Include="Assets\SpawnSound.cs" />
+    <Compile Include="Assets\TextDisappear.cs" />
+    <Compile Include="Assets\TextVisibility.cs" />
     <Compile Include="Assets\WaveStart.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
