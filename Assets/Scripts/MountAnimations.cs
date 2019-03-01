@@ -41,9 +41,9 @@ public class MountAnimations : MonoBehaviour {
         } else if (rigid.velocity.y < 0)
         {
             this.anim.SetInteger("State", 3);
-        } else if ((rigid.velocity.x > walkThreshold && going < 0) || (rigid.velocity.x < -walkThreshold && going > 0))
+        } else if (!enemy && ((rigid.velocity.x >= walkThreshold && Input.GetKey(GetComponent<PlayerController>().leftKey) || (rigid.velocity.x <= -walkThreshold && Input.GetKey(GetComponent<PlayerController>().rightKey)))))
         {
-            if (!enemy && !brakeSource.isPlaying )
+            if (!brakeSource.isPlaying )
             {
                 playing = 2;
                 brakeSource.Play();
@@ -58,7 +58,7 @@ public class MountAnimations : MonoBehaviour {
                 walkSource.Play();
             }
             this.anim.SetInteger("State", 1);
-        } else
+        } else if (!this.anim.GetInteger("State").Equals(5))
         {
             this.anim.SetInteger("State", 0);
         }

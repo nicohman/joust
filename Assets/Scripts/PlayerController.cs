@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     public AudioSource flapSource;
     private float veloc = 0;
     public float acceleration = 60;
-    public float immortalTime = 1.0f;
+    public bool immortal = false;
     private RespawnPoint[] respawns;
     private RespawnPoint respawnAt;
     private new BoxCollider2D collider;
@@ -53,61 +53,73 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.immortalTimer -= Time.deltaTime;
         this.respawnTimer -= Time.deltaTime;
-        if (this.respawnTimer <= 0)
+        if (immortal)
         {
-            this.rigid.gravityScale = 1.0f;
-            /*if ( this.immortalTimer <= 0f && this.anim.GetBool("Immortal")) {
-                this.anim.SetBool("Immortal", false);
-            }*/
-            if (rigid.velocity.y.Equals(0) && flapSource.isPlaying)
-            {
-                flapSource.Stop();
-            }
-            if (going ==1&& !sprite.flipX)
-            {
-                sprite.flipX = false;
-            } else if (going == -1 && sprite.flipX)
-            {
-                sprite.flipX = true;
-            }
-                if (Input.GetKey(this.leftKey))
-            {
-                going = -1;
-               this.sprite.flipX = true;
-                if ( veloc > -(speed * 1.06))
-                {
-                    veloc -= speed / acceleration;
-                }
-            }
-            if (Input.GetKey(this.rightKey))
-            {
-                going = 1;
-                this.sprite.flipX = false;
-                if (this.veloc < speed * 1.06 )
-                {
-                    veloc += speed / acceleration;
-                }
-            }
-            if (Input.GetKeyDown(this.jumpKey)) 
-            {
-                this.flapSource.Play();
-                this.mountAnim.PlayFlag();
-                this.jumper.jump();
-            }
-            if (veloc < 0)
-            {
-                veloc = Mathf.Max(veloc, -speed);
-            }
-            else
-            {
-                veloc = Mathf.Min(veloc, speed);
-            }
-            this.rigid.velocity = new Vector2(veloc, rigid.velocity.y);
-            UpdateCollider();
+            this.gameObject.layer = 8;
+        } else
+        {
+            this.gameObject.layer = 0;
         }
-
+        if (immortal & Input.anyKeyDown)
+        {
+            immortal = false;
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+            GetComponent<Animator>().SetInteger("State", 0);
+        }
+        else if (!immortal)
+        {
+            if (this.respawnTimer <= 0)
+            {
+                this.rigid.gravityScale = 1.0f;
+                if (rigid.velocity.y.Equals(0) && flapSource.isPlaying)
+                {
+                    flapSource.Stop();
+                }
+                if (going == 1 && !sprite.flipX)
+                {
+                    sprite.flipX = false;
+                }
+                else if (going == -1 && sprite.flipX)
+                {
+                    sprite.flipX = true;
+                }
+                if (Input.GetKey(this.leftKey))
+                {
+                    going = -1;
+                    this.sprite.flipX = true;
+                    if (veloc > -(speed * 1.06))
+                    {
+                        veloc -= speed / acceleration;
+                    }
+                }
+                if (Input.GetKey(this.rightKey))
+                {
+                    going = 1;
+                    this.sprite.flipX = false;
+                    if (this.veloc < speed * 1.06)
+                    {
+                        veloc += speed / acceleration;
+                    }
+                }
+                if (Input.GetKeyDown(this.jumpKey))
+                {
+                    this.flapSource.Play();
+                    this.mountAnim.PlayFlag();
+                    this.jumper.jump();
+                }
+                if (veloc < 0)
+                {
+                    veloc = Mathf.Max(veloc, -speed);
+                }
+                else
+                {
+                    veloc = Mathf.Min(veloc, speed);
+                }
+                this.rigid.velocity = new Vector2(veloc, rigid.velocity.y);
+                UpdateCollider();
+            }
+        }
     }
     private void UpdateCollider()
     {
@@ -191,7 +203,11 @@ public class PlayerController : MonoBehaviour {
             Instantiate<GameObject>(deathParticles, transform.position, transform.rotation);
             this.respawnAt = toRespawn;
             this.transform.position = new Vector3(toRespawn.transform.position.x, toRespawn.transform.position.y, toRespawn.transform.position.z);
-            this.immortalTimer = this.immortalTime;
+            this.rigid.velocity = new Vector2(0, 0);
+            immortal = true;
+            rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            
+            GetComponent<Animator>().SetInteger("State", 5);
             this.respawnTimer = this.respawnTime;
         }
         else
