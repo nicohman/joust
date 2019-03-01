@@ -203,9 +203,9 @@ public class Tutorial : MonoBehaviour
         new TutorialCommand() { StartTime = 18.00f, EndTime = 21.0f, Action = TutorialCommand.Actions.PlayerRun },
         new TutorialCommand() { StartTime = 21.0f, EndTime = 21.1f, Action = TutorialCommand.Actions.PlayerStop },
         new TutorialCommand() { StartTime = 42.00f, EndTime = 43.0f, Action = TutorialCommand.Actions.PlayerMove },
-        new TutorialCommand() { StartTime = 47.00f, EndTime = 48.5f, Action = TutorialCommand.Actions.PlayerJump },
-        new TutorialCommand() { StartTime = 48.50f, EndTime = 55.0f, Action = TutorialCommand.Actions.LockPosition },
-        new TutorialCommand() { StartTime = 55.00f, EndTime = 56.00f, Action = TutorialCommand.Actions.End },
+        new TutorialCommand() { StartTime = 47.00f, EndTime = 49.0f, Action = TutorialCommand.Actions.PlayerJump },
+        new TutorialCommand() { StartTime = 49.0f, EndTime = 55.0f, Action = TutorialCommand.Actions.LockPosition },
+        new TutorialCommand() { StartTime = 57.00f, EndTime = 58.00f, Action = TutorialCommand.Actions.End },
     };
 }
 

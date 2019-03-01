@@ -39,7 +39,7 @@ public class MountAnimations : MonoBehaviour {
         {
             going = GetComponent<EnemyController>().going;
         }
-        if (!tutorial && !enemy && GetComponent<PlayerController>().immortal)
+        if (!enemy && GetComponent<PlayerController>().immortal)
         {
             return;
         }
@@ -60,7 +60,7 @@ public class MountAnimations : MonoBehaviour {
 
         } else if (rigid.velocity.x > walkThreshold || rigid.velocity.x < -walkThreshold)
         {
-            if ( !enemy && !walkSource.isPlaying )
+            if ( !enemy && !walkSource.isPlaying && !tutorial )
             {
                 playing = 1;
                 walkSource.Play();

@@ -18,7 +18,7 @@ public class EnemyFlying : MonoBehaviour {
     void Start () {
         timer = timeToAppear;
         deathTime = timeToDie;
-        Time.timeScale = 5;
+        //Time.timeScale = 5;
         
 	}
 	
