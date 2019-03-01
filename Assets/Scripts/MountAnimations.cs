@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Plays animations for a flying mount
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +16,7 @@ public class MountAnimations : MonoBehaviour {
     public AudioSource brakeSource;
     public AudioSource walkSource;
     public Sprite idle;
+    public bool tutorial = false;
     public float walkThreshold = 0.05f;
     public float flyThreshold = 0.05f;
     // Use this for initialization
@@ -27,24 +32,24 @@ public class MountAnimations : MonoBehaviour {
 	void Update () {
         int going = 1;
         int playing = 0;
-        if (!enemy)
+        if (!enemy && !tutorial)
         {
              going = GetComponent<PlayerController>().going;
-        } else
+        } else if (!tutorial)
         {
             going = GetComponent<EnemyController>().going;
         }
-        if (!enemy && GetComponent<PlayerController>().immortal)
+        if (!tutorial && !enemy && GetComponent<PlayerController>().immortal)
         {
             return;
         }
-        if (rigid.velocity.y>0 || (enemy && GetComponent<EnemyController>().ClosestPlayer().transform.position.y + GetComponent<SpriteRenderer>().bounds.extents.y > transform.position.y))
+        if (rigid.velocity.y>0 || (!tutorial && enemy && GetComponent<EnemyController>().ClosestPlayer().transform.position.y + GetComponent<SpriteRenderer>().bounds.extents.y > transform.position.y))
         {
             this.anim.SetInteger("State", 2);
         } else if (rigid.velocity.y < 0)
         {
             this.anim.SetInteger("State", 3);
-        } else if (!enemy && ((rigid.velocity.x >= walkThreshold && Input.GetKey(GetComponent<PlayerController>().leftKey) || (rigid.velocity.x <= -walkThreshold && Input.GetKey(GetComponent<PlayerController>().rightKey)))))
+        } else if (!enemy && !tutorial && ((rigid.velocity.x >= walkThreshold && Input.GetKey(GetComponent<PlayerController>().leftKey) || (rigid.velocity.x <= -walkThreshold && Input.GetKey(GetComponent<PlayerController>().rightKey)))))
         {
             if (!brakeSource.isPlaying )
             {

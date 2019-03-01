@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - Immortal
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Egg
+  - TutorialEnemy
   - 
   - 
   - 

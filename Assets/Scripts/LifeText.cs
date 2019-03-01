@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Displays how many lives the player has
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

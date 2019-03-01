@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Jumps a mount
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

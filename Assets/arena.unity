@@ -373,7 +373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -258.104, y: -234.671}
+  m_AnchoredPosition: {x: -258.104, y: -234.666}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356625228
@@ -682,7 +682,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 621190404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 1.165, z: 0}
+  m_LocalPosition: {x: -0.3, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1125,7 +1125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -257.206, y: -234.671}
+  m_AnchoredPosition: {x: -257.206, y: -234.666}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962355154
@@ -1836,7 +1836,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1435484365
 Transform:
@@ -1931,7 +1931,7 @@ Prefab:
     - target: {fileID: 224578499491020004, guid: 2e4cb9c9abacef24981d5586f7fd97cc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -234.671
+      value: -234.666
       objectReference: {fileID: 0}
     - target: {fileID: 224578499491020004, guid: 2e4cb9c9abacef24981d5586f7fd97cc,
         type: 2}
@@ -2816,6 +2816,7 @@ MonoBehaviour:
   brakeSource: {fileID: 1750807528}
   walkSource: {fileID: 1852249537}
   idle: {fileID: 21300006, guid: a97489a4eb5691f4a82b06201bf14ea8, type: 3}
+  tutorial: 0
   walkThreshold: 0.0001
   flyThreshold: 0.05
 --- !u!114 &1832760355

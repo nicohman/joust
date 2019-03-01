@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/arena.unity
     guid: 890b486150fdf0e4496d441a66cc3471
+  - enabled: 1
+    path: Assets/gameover.unity
+    guid: 55e0fc6f055cd416385ff14295b7f99f
+  - enabled: 1
+    path: Assets/tutorial.unity
+    guid: d2252bca21615e845b8790321a3c4a90

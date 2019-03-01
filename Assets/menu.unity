@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 157666469}
   - component: {fileID: 157666471}
   - component: {fileID: 157666470}
+  - component: {fileID: 157666472}
   m_Layer: 5
   m_Name: Top
   m_TagString: Untagged
@@ -187,6 +188,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 157666468}
+--- !u!114 &157666472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 157666468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e21c8e847a84db9b8bb5997671aeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &326410673
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568459733}
   - component: {fileID: 568459734}
+  - component: {fileID: 568459735}
   m_Layer: 0
   m_Name: Logo
   m_TagString: Untagged
@@ -484,6 +497,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &568459735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568459732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da2f7eaf8ad1463ba76dd169e8a566d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadTime: 16
 --- !u!1 &682787636
 GameObject:
   m_ObjectHideFlags: 0

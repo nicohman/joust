@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Wrap a GameObject around the screen
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

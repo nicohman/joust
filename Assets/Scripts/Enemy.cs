@@ -1,4 +1,7 @@
-﻿
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Provides information about an enemy
+*****************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

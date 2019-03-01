@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Automatically spawns enemies
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

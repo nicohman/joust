@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Keeps a gameobject at a specific offset from another continuously
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

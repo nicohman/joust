@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*****************
+ * By Nico Hickman
+ * Purpose: Control player
+*****************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,23 +83,30 @@ public class PlayerController : MonoBehaviour {
         {
             if (this.respawnTimer <= 0)
             {
+                if (rigid.velocity.x > GetComponent<MountAnimations>().walkThreshold)
+                {
+                    sprite.flipX = false;
+                } else if (rigid.velocity.x < -GetComponent<MountAnimations>().walkThreshold){
+                    sprite.flipX = true;
+                }
+                if (!rigid.velocity.y.Equals(0) && going.Equals(1) && sprite.flipX)
+                {
+                    sprite.flipX = false;
+                } else if (!rigid.velocity.y.Equals(0) && going.Equals(-1) && !sprite.flipX)
+                {
+                    sprite.flipX = true;
+                }
+
+
                 this.rigid.gravityScale = 1.0f;
                 if (rigid.velocity.y.Equals(0) && flapSource.isPlaying)
                 {
                     flapSource.Stop();
                 }
-                if (going == 1 && !sprite.flipX)
-                {
-                    sprite.flipX = false;
-                }
-                else if (going == -1 && sprite.flipX)
-                {
-                    sprite.flipX = true;
-                }
+              
                 if (Input.GetKey(this.leftKey))
                 {
                     going = -1;
-                    this.sprite.flipX = true;
                     if (veloc > -(speed * 1.06))
                     {
                         veloc -= speed / acceleration;
@@ -104,7 +115,6 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetKey(this.rightKey))
                 {
                     going = 1;
-                    this.sprite.flipX = false;
                     if (this.veloc < speed * 1.06)
                     {
                         veloc += speed / acceleration;
@@ -222,8 +232,16 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            if (points > ScoreText.highScore)
+            {
+                ScoreText.highScore = points;
+            }
             Instantiate<GameObject>(deathParticles, transform.position, transform.rotation);
             print("game over");
+            Enemy[] enemies = Enemy.FindObjectsOfType<Enemy>();
+            for(int i = 0; i <enemies.Length; i++) {
+                Destroy(enemies[i]);
+            }
             gameOver.Lose();
             Destroy(this.gameObject);
             //Player is fully dead
