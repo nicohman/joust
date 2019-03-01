@@ -34,7 +34,10 @@ public class MountAnimations : MonoBehaviour {
         {
             going = GetComponent<EnemyController>().going;
         }
-
+        if (!enemy && GetComponent<PlayerController>().immortal)
+        {
+            return;
+        }
         if (rigid.velocity.y>0 || (enemy && GetComponent<EnemyController>().ClosestPlayer().transform.position.y + GetComponent<SpriteRenderer>().bounds.extents.y > transform.position.y))
         {
             this.anim.SetInteger("State", 2);

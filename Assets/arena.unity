@@ -373,7 +373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -258.104, y: -234.684}
+  m_AnchoredPosition: {x: -258.104, y: -234.671}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356625228
@@ -1125,7 +1125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -257.206, y: -234.684}
+  m_AnchoredPosition: {x: -257.206, y: -234.671}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962355154
@@ -1931,7 +1931,7 @@ Prefab:
     - target: {fileID: 224578499491020004, guid: 2e4cb9c9abacef24981d5586f7fd97cc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -234.684
+      value: -234.671
       objectReference: {fileID: 0}
     - target: {fileID: 224578499491020004, guid: 2e4cb9c9abacef24981d5586f7fd97cc,
         type: 2}
@@ -2751,11 +2751,11 @@ MonoBehaviour:
   lives: 5
   speed: 2
   going: 1
+  immortalTime: 4
   flapSource: {fileID: 1737322317}
   acceleration: 40
   immortal: 0
   deathSource: {fileID: 1921995360}
-  immortalTimer: 0
   lifePer: 20000
   respawnTime: 0.5
   respawnTimer: 0

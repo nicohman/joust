@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a7c5176279144d4488bd78113dccb9cc
-timeCreated: 1551404930
+guid: e657773faa1fd4f40be396bb378ba30f
+timeCreated: 1551404963
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,11 +10,10 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Numbers
+  fontName: Score
   fontNames:
-  - Numbers
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 8226f80372345194f87e98d0fa4d55be, type: 3}
+  - Score
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

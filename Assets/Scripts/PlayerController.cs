@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer sprite;
     public float speed = 10;
     public int going = 1;
+    public float immortalTime = 4.0f;
+    private float immortalTimer = 0.0f;
     public AudioSource flapSource;
     private float veloc = 0;
     public float acceleration = 60;
@@ -23,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     private RespawnPoint respawnAt;
     private new BoxCollider2D collider;
     public AudioSource deathSource;
-    public float immortalTimer = 0.0f;
     public int lifePer = 5;
     private int nextLife;
     public float respawnTime = 10000f;
@@ -54,6 +55,13 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         this.respawnTimer -= Time.deltaTime;
+        this.immortalTimer -= Time.deltaTime;
+        if (immortalTimer <= 0 && immortal)
+        {
+            immortal = false;
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+            GetComponent<Animator>().SetInteger("State", 0);
+        }
         if (immortal)
         {
             this.gameObject.layer = 8;
@@ -205,6 +213,8 @@ public class PlayerController : MonoBehaviour {
             this.transform.position = new Vector3(toRespawn.transform.position.x, toRespawn.transform.position.y, toRespawn.transform.position.z);
             this.rigid.velocity = new Vector2(0, 0);
             immortal = true;
+            immortalTimer = immortalTime;
+            veloc = 0;
             rigid.constraints = RigidbodyConstraints2D.FreezeAll;
             
             GetComponent<Animator>().SetInteger("State", 5);
