@@ -29,8 +29,10 @@ public class Pterodactyl : MonoBehaviour
         deathTime -= Time.deltaTime;
         if (timer <= 0)
         {
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             //GetComponent<Animator>().SetInteger("State", 2);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-1.1f, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-1.1f, 0);
         }
         if (deathTime <= 0)
         {

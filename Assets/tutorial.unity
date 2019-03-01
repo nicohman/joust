@@ -1009,9 +1009,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAppear: 34
-  timeToDie: 44
+  timeToDie: 45
   timeToFly: 39
-  stopFlying: 42
+  stopFlying: 44
 --- !u!114 &789352734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,14 +1728,14 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &1266932703
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1266932695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2132,7 +2132,7 @@ MonoBehaviour:
   brakeSource: {fileID: 0}
   walkSource: {fileID: 0}
   idle: {fileID: 21300000, guid: 549e01653e96d824397ae4147a7ea59f, type: 3}
-  tutorial: 0
+  tutorial: 1
   walkThreshold: 0.0001
   flyThreshold: 0.05
 --- !u!111 &1383929114
@@ -2297,9 +2297,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAppear: 31
-  timeToDie: 44
+  timeToDie: 45
   timeToFly: 39
-  stopFlying: 42
+  stopFlying: 44
 --- !u!114 &1437666863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,9 +2593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAppear: 28
-  timeToDie: 44
+  timeToDie: 45
   timeToFly: 39
-  stopFlying: 42
+  stopFlying: 44
 --- !u!114 &1726148048
 MonoBehaviour:
   m_ObjectHideFlags: 0
