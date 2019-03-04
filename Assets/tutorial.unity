@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7227d3d42d305fc45883e7c23d59f9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 35
+  startTime: 34
   endTime: 38
 --- !u!114 &206451175
 MonoBehaviour:
@@ -1009,9 +1009,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAppear: 34
-  timeToDie: 45
-  timeToFly: 39
-  stopFlying: 44
+  timeToDie: 41.6
+  timeToFly: 38
+  stopFlying: 41
 --- !u!114 &789352734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,9 +2297,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAppear: 31
-  timeToDie: 45
-  timeToFly: 39
-  stopFlying: 44
+  timeToDie: 41.6
+  timeToFly: 38
+  stopFlying: 41
 --- !u!114 &1437666863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2536,7 +2536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 31
-  endTime: 35
+  endTime: 34
 --- !u!114 &1613644325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,9 +2593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToAppear: 28
-  timeToDie: 45
-  timeToFly: 39
-  stopFlying: 44
+  timeToDie: 41.6
+  timeToFly: 38
+  stopFlying: 41
 --- !u!114 &1726148048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,7 +2747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7227d3d42d305fc45883e7c23d59f9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 21
+  startTime: 20.5
   endTime: 23
 --- !u!114 &1895042125
 MonoBehaviour:

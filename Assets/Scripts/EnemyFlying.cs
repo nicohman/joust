@@ -18,7 +18,6 @@ public class EnemyFlying : MonoBehaviour {
     void Start () {
         timer = timeToAppear;
         deathTime = timeToDie;
-        //Time.timeScale = 5;
         
 	}
 	
@@ -39,8 +38,8 @@ public class EnemyFlying : MonoBehaviour {
             egg.GetComponent<Rigidbody2D>().velocity = new Vector2(-1.1f, egg.GetComponent<Rigidbody2D>().velocity.y);
             egg.GetComponent<Rigidbody2D>().sharedMaterial = eggMaterial;
             egg.gameObject.AddComponent<DieAfter>();
-            egg.gameObject.GetComponent<DieAfter>().time = 4;
-            egg.gameObject.GetComponent<DieAfter>().timer = 4;
+            egg.gameObject.GetComponent<DieAfter>().time = 4.5f;
+            egg.gameObject.GetComponent<DieAfter>().timer = 4.5f;
 
             egg.gameObject.layer = 11;
             Destroy(this.gameObject);

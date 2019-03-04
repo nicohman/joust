@@ -45,7 +45,7 @@ public class EnemyWalk : MonoBehaviour
         stopTimer -= Time.deltaTime;
         if(flyTimer <= 0 && stopTimer > 0)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0.6f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 0.3f);
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             GetComponent<Animator>().SetInteger("State", 2);
         }

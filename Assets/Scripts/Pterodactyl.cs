@@ -44,8 +44,7 @@ public class Pterodactyl : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Instantiate<GameObject>(deathParticles, collision.transform.position, collision.transform.rotation);
-
-            Destroy(collision.gameObject);
+            collision.transform.position = new Vector2(100.0f, 100.0f);
         }
     }
 }

@@ -155,10 +155,15 @@ public class Tutorial : MonoBehaviour
                         }
                         break;
                     case TutorialCommand.Actions.End:
-                        SceneManager.LoadScene("menu");
+                        {
+                            print("loading");
+                            SceneManager.LoadScene("menu");
+                        }
                         break;
                     case TutorialCommand.Actions.PlayerStop:
-                        GetComponent<Animator>().SetInteger("State", 0);
+                        {
+                            GetComponent<Animator>().SetInteger("State", 0);
+                        }
                         break;
 
                 }
@@ -205,7 +210,7 @@ public class Tutorial : MonoBehaviour
         new TutorialCommand() { StartTime = 42.00f, EndTime = 43.0f, Action = TutorialCommand.Actions.PlayerMove },
         new TutorialCommand() { StartTime = 47.00f, EndTime = 49.0f, Action = TutorialCommand.Actions.PlayerJump },
         new TutorialCommand() { StartTime = 49.0f, EndTime = 55.0f, Action = TutorialCommand.Actions.LockPosition },
-        new TutorialCommand() { StartTime = 57.00f, EndTime = 58.00f, Action = TutorialCommand.Actions.End },
+        new TutorialCommand() { StartTime = 57.0f, EndTime = 58.0f, Action = TutorialCommand.Actions.End }
     };
 }
 
